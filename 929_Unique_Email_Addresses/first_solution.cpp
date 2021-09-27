@@ -38,3 +38,6 @@ public:
         return s.size();
     }
 };
+
+// Runtime: 32 ms, faster than 37.46% of C++ online submissions for Unique Email Addresses.
+// Memory Usage: 16.3 MB, less than 13.51% of C++ online submissions for Unique Email Addresses.
