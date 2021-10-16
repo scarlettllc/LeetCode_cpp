@@ -6,7 +6,7 @@ public:
         backtrack(ans, num, target, expr, 0, 0, 0);
         return ans;
     }
-    void backtrack(vector<string> &ans, string num, int target, string &expr, int i, long int res, long int mul) {
+    void backtrack(vector<string> &ans, string &num, int &target, string &expr, int i, long int res, long int mul) {
         if (i == num.size()) {
             if (res == target) {
                 ans.push_back(expr);
@@ -25,7 +25,7 @@ public:
                 backtrack(ans, num, target, expr, j + 1, val, val);
             } else{
                 expr[expr_sz] = '+'; backtrack(ans, num, target, expr, j + 1, res + val, val);
-                expr[expr_sz] = '-'; backtrack(ans, num, target, expr, j + 1, res - val, -val); 
+                expr[expr_sz] = '-'; backtrack(ans, num, target, expr, j + 1, res - val, -val);
                 expr[expr_sz] = '*'; backtrack(ans, num, target, expr, j + 1, res - mul + mul * val, mul * val);
             }
         }
