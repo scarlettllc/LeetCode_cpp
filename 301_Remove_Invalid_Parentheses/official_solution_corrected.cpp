@@ -26,6 +26,11 @@ public:
         }
         for (int i = start; i < str.size(); ++i) {
             if (i != start && str[i] == str[i - 1]) {
+                if (str[i] == '(') {
+                    ++lcount;
+                } else if (str[i] == ')') {
+                    ++rcount;
+                }
                 continue;
             }
             if (l_remove + r_remove > str.size() - i) {
