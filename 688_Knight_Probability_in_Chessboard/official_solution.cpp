@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<vector<int>> dirs{{2, 1}, {2, -1}, {1, 2}, {1, -2}, {-2, 1}, {-2, -1}, {-1, 2}, {-1, -2}};
+    double knightProbability(int n, int k, int row, int column) {   
+        vector<vector<vector<double>>> dp(k + 1, vector<vector<double>>(n, vector<double>(n)));
+        for (int step = 0; step <= k; ++step) {
+            for (int i = 0; i < n; ++i) {
+                for (int j = 0; j < n; ++j) {
+                    if (step == 0) {
+                        dp[step][i][j] = 1;
+                    } else {
+                        for (auto & dir : dirs) {
+                            int x = i + dir[0], y = j + dir[1];
+                            if (x >= 0 && x < n && y >= 0 && y < n) {
+                                dp[step][i][j] += dp[step - 1][x][y];
+                            }
+                        }
+                        dp[step][i][j] /= 8;
+                    }
+                }
+            }
+        }
+        return dp[k][row][column];
+    }
+};
